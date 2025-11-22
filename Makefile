@@ -1,7 +1,7 @@
 .PHONY: compile execute
 
 compile:
-	@pwsh ./scripts/compile.ps1 -Source "$(File)"
+	@pwsh ./scripts/compile.ps1
 
 execute:
-	@pwsh ./scripts/execute.ps1
+	@pwsh ./scripts/execute.ps1 -File "$(File)"
