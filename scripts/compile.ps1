@@ -18,7 +18,7 @@ function Compile {
     }
 
     nasm -f win64 source/crc32_step.asm -o obj/crc32_step.obj ;
-    clang source/main.c source/crc32.c obj/crc32_step.obj -o build/hasher.exe ;
+    clang source/main.c source/crc32.c obj/crc32_step.obj -o build/crc32.exe ;
 
     Write-Host "[SUCCESS] " -NoNewline -ForegroundColor Green ;
     Write-Host "Successfully compiled the main.c source file." ;
