@@ -1,17 +1,23 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 #include "include/crc32.h"
 
 #define BUFFER_SIZE 4096
 
 int main(int argc, char** argv) {
-    if (argc < 2) {
-        printf("Usage: %s <file>\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Usage: %s [--file/-f] <path>\n", argv[0]);
         return 1;
     }
 
-    FILE* f = fopen(argv[1], "rb");
+    if (strcmp(argv[1], "--file") != 0 && strcmp(argv[1], "-f") != 0) {
+        fprintf(stderr, "Unknown argument: %s\n", argv[1]);
+        return 1;
+    }
+
+    FILE* f = fopen(argv[2], "rb");
     if (!f) {
         perror("fopen");
         return 1;
